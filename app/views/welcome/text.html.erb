@@ -1,5 +1,5 @@
-<h1>Welcome to <%= @location %></h1>
-<h3>The current temperature in <%= @location %> is <%= @temperature %></h3>
+<h1>Welcome to <%= @current_observation['display_location']['full'] %></h1>
+<h3>The current temperature in <%= @current_observation['display_location']['full'] %> is <%= @current_observation['temperature_string'] %></h3>
 
 
 <p>Find me in app/views/welcome/text.html.erb</p>
