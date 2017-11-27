@@ -1,2 +1,40 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div class="row">
+	<div class="col-md-6">
+		<div class="well">
+			<h2>Look up your local forecast!</h2>
+			<%= form_tag index_path do %>
+				<%= text_field_tag :city, nil, placeholder: "City" %>
+				<%= select_tag :state, options_for_select(@states), prompt: "Please select" %>
+				<%= submit_tag "Check Weather", class: "btn btn-primary" %>
+			<%end%>
+		</div>
+	</div>
+</div>
+<% if @error.present? %>
+	<div class="row">
+		<div class="col-md-6">
+			<p><%= @error %></p>
+		</div>
+	</div>
+<% elsif @current_observation.present? %>
+	<div class="row">
+		<div class="col-md-6">
+			<p>Weather for <%=@current_observation['display_location']['full']%></p>
+			<p>Temperature: <%= @current_observation['temperature_string'] %></p>
+			<p>Humidity: <%= @current_observation['relative_humidity'] %></p>
+			<p>Sky: <%= @current_observation['weather'] %></p>
+			<%= link_to "Full Forecast", @current_observation['forecast_url'], target: "_blank" %>
+		</div>
+	</div>
+<% end %>
+
+<h3>Previous Searches</h3>
+<div class="row">
+	<div class="col-md-6">
+		<p>
+			<% @locations.each do |location| %>
+				<%= link_to "#{location.city}, #{location.state}", "https://www.wunderground.com/weather/us/#{location.state}/#{location.city}", target: "_blank"%>
+		</p>
+		<%end%>
+	</div>
+</div>
