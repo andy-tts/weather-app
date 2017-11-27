@@ -10,22 +10,38 @@
 		</div>
 	</div>
 </div>
+<br />
+<br />
 <% if @error.present? %>
 	<div class="row">
 		<div class="col-md-6">
 			<p><%=@error %></p>
 		</div>
 	</div>
-<% end %>	
+<% end %>
+
+
 <% if @current_observation.present? %>
 <div class="row">
 	<div class="col-md-6">
 		<p>Weather for <%=@current_observation['display_location']['full'] %></p>
 		<p><%= @current_observation['temperature_string'] %></p>
 		<p>The Humidity is <%= @current_observation['relative_humidity'] %></p>
+			
+		<%= link_to "Full Forecast", @current_observation['forecast_url'], target: "_blank" %>
 	</div>
 </div>
 <% end %>
+
+<div class="row">
+	<div class="col-md-6">
+		<p>Your Cities: </p>
+			<ul> <% @locations.each do |location| %>
+				<li><%=location.city %> ,<%=location.state %></li>
+			<% end %>
+			</ul>	
+	</div>
+</div>
 
 
 <!-- <h1>Welcome#index</h1>
