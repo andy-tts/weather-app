@@ -25,7 +25,16 @@ function initMap() {
 	var marker = new google.maps.Marker({
 		position: { lat: 39.9585, lng: -83.0119 },
 		title: "Idea Foundry",
-		map: ourMap
+		map: ourMap,
+		animation: google.maps.Animation.DROP
+	});
+
+	var infoWindow = new google.maps.InfoWindow({
+		content: "<h5>Where people learn to code!</h5>"
+	});
+
+	google.maps.event.addListener(marker, 'click', function() {
+		infoWindow.open(ourMap, marker);
 	});
 }
 
