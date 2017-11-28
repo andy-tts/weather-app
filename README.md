@@ -10,5 +10,7 @@ for map part of this project. It's free so the insecure nature of this website
 shouldn't be too much of an issue.
 
 Place the two keys in weather-app/config/application.yml as so:
+
 wunderground_api_key: "your_wunderground_key_here"
+
 google_api_key: "your_google_key_here"
