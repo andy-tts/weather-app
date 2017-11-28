@@ -24,7 +24,9 @@ class WelcomeController < ApplicationController
 			if location_exists == false 
   				Location.create(
   					city: params[:city],
-  					state: params[:state]
+  					state: params[:state],
+  					latitude: latitude,
+  					longitude: longitude
   						)
   		end
 
@@ -37,6 +39,8 @@ class WelcomeController < ApplicationController
 
   		else
   			@current_observation = results['current_observation']
+  			latitude = @current_observation['display_location']['latitude']
+  			longitude = @current_observation['display_location']['longitude']
   		end
   		end
   	end	
