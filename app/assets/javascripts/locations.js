@@ -15,24 +15,13 @@
 //= require_tree .
 //= require jquery
 
-function initMap() {
-	var ourMap = new google.maps.Map(document.getElementById('map-canvas'), {
-		center: {lat: 39.961, lng: -82.998},
+//latitude, longitude
+//		
+
+function cityMap() {
+	var ourMap = new google.maps.Map(document.getElementById('location-map'), {
+		center: {lat: latitude, lng: longitude},
 		zoom: 14
 	});
-
-	var marker = new google.maps.Marker({
-		position: {lat: 39.9585, lng: -83.0119},
-		title: "Idea Foundry",
-		map: ourMap,
-		animation: google.maps.Animation.DROP
-	});
-
-	var infoWindow = new google.maps.InfoWindow({
-		content: "<h5>Where people learn to code!</h5>"	
-	});
-
-	google.maps.event.addListener(marker, 'click', function() {
-		infoWindow.open(ourMap, marker);
-	});
+	
 }

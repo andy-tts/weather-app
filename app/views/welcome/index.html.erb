@@ -33,9 +33,10 @@
 	<div class="col-md-6">
 		<% @locations.each do |location| %>
 			<p>
-				<%= link_to "#{location.city}, #{location.state}", "https://www.wunderground.com/weather/us/#{location.state}/#{location.city}", target: "_blank"%>
+				<h4><%= link_to "#{location.city}, #{location.state}", "https://www.wunderground.com/weather/us/#{location.state}/#{location.city}", target: "_blank"%></h4>
 				<% if location.latitude.present? && location.longitude.present? %>
 					<p>Lat: <%= location.latitude %>, Lon: <%= location.longitude %></p>
+					<p><%= link_to location.city + " on a map", "/locations/show?id=#{location.id}" %></p>
 				<%end%>
 			</p>
 		<%end%>
@@ -49,3 +50,6 @@
 		</div>
 	</div>
 </div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_api_key'] %>&callback=initMap"
+    async defer></script>
