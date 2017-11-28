@@ -33,7 +33,8 @@
 			<% @locations.each do |location| %>
 				<li>
 					<%= location.city %>, <%= location.state %>
-					<p>Lat: <%= location.latitude %>, Lon: <%= location.longitude %> </p>
+					<%= link_to "More details(including map!)", location_path(id: location.id) %>
+					<p>Lat: <%= location.latitude %>, Lon: <%= location.longitude %></p>
 					<%= link_to "Full Forecast", "http://www.wunderground.com/US/#{location.state}/#{location.city}.html", target: "_blank" %>	
 				</li>
 			<% end %>

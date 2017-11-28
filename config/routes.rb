@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'location/show'
+  get 'location' => 'location#show'
+
   get 'welcome/text'
 
   get 'welcome/index'
