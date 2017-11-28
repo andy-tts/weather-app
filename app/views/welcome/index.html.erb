@@ -37,8 +37,11 @@
 	<div class="col-md-6">
 		<h3>Your Cities: </h3>
 			<ul> <% @locations.each do |location| %>
-				<li><%= location.city %>, <%= location.state %>
-					<p>Lat: <%= location.latitude %>, Lon: <%= location.longitude %></p>
+
+				<li>
+					<%= location.city %>, <%= location.state %>
+					<%=link_to "View on Map!", location_path(id: location.id) %>
+					<!-- <p>Lat: <%= location.latitude %>, Lon: <%= location.longitude %></p> -->
 					<%= link_to "Full Forecast", "http://www.wunderground.com/US/#{location.state}/#{location.city}.html", target: "_blank" %>
 				</li>
 			<% end %>
@@ -51,6 +54,7 @@
 	</div>
 </div>
 
-
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_api_key'] %>&callback=initMap"
+    async defer></script>
 <!-- <h1>Welcome#index</h1>
 <p>Find me in app/views/welcome/index.html.erb</p> -->
