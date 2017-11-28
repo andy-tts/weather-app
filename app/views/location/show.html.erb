@@ -4,3 +4,17 @@
 		<h5>Coordinates: <%= @location.latitude %>, <%= @location.longitude %></h5>
 	</div>
 </div>
+
+<div class="row">
+	<div class="col-md-6">
+		<div id="location-map"></div>
+	</div>
+</div>
+
+<%= javascript_tag do %>
+	var longitude = <%= @location.longitude %>;
+	var latitude = <%= @location.latitude %>;
+<% end %>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_api_key'] %>&callback=initLocationMap"
+    async defer></script>
