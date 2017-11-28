@@ -31,10 +31,10 @@
 <h3>Previous Searches</h3>
 <div class="row">
 	<div class="col-md-6">
-		<p>
-			<% @locations.each do |location| %>
+		<% @locations.each do |location| %>
+			<p>
 				<%= link_to "#{location.city}, #{location.state}", "https://www.wunderground.com/weather/us/#{location.state}/#{location.city}", target: "_blank"%>
-		</p>
+			</p>
 		<%end%>
 	</div>
 </div>
