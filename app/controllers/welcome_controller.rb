@@ -16,13 +16,15 @@ class WelcomeController < ApplicationController
   			@error = results['response']['error']['description']
 			else
 				@current_observation = results['current_observation']
-				create_location(params[:city], params[:state])
+				latitude = @current_observation['display_location']['latitude']
+				longitude = @current_observation['display_location']['longitude']
+				create_location(params[:city], params[:state], latitude, longitude)
 			end
   	end
   	@locations = Location.all
   end
 
-  def create_location(city_param, state_param)
+  def create_location(city_param, state_param, latitude, longitude)
   	location_exists = false
 
 		Location.all.each do |location| 
@@ -31,7 +33,7 @@ class WelcomeController < ApplicationController
 			end
 		end
 		if location_exists == false
-			Location.create(city: city_param, state: state_param)
+			Location.create(city: city_param, state: state_param, latitude: latitude, longitude: longitude)
 		end
   end
 end
