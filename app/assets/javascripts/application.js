@@ -20,7 +20,13 @@ function initMap() {
 		center: { lat: 39.964, lng: -82.999},
 		zoom: 14
 	};
-	var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+	var ourMap = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+	var marker = new google.maps.Marker({
+		position: { lat: 39.9585, lng: -83.0119 },
+		title: "Idea Foundry",
+		map: ourMap
+	});
 }
 
 
