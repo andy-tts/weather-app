@@ -13,3 +13,16 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+//= require jquery
+
+function initMap() {
+	var mapOptions = {
+		center: { lat: 39.964, lng: -82.999},
+		zoom: 14
+	};
+	var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+}
+
+
+
+
