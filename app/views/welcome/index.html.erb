@@ -37,9 +37,16 @@
 	<div class="col-md-6">
 		<p>Your Cities: </p>
 			<ul> <% @locations.each do |location| %>
-				<li><%=location.city %> ,<%=location.state %></li>
+				<li><%= location.city %>, <%= location.state %>
+					<%= link_to "Full Forecast", "http://www.wunderground.com/US/#{location.state}/#{location.city}.html", target: "_blank" %>
+				</li>
 			<% end %>
 			</ul>	
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div id="map-canvas"></div>
 	</div>
 </div>
 
