@@ -10,11 +10,28 @@ class WelcomeController < ApplicationController
   	if params[:city].present? && params[:state].present?
   		city_param = URI.encode(params[:city])
   		results = HTTParty.get("http://api.wunderground.com/api/#{ENV['wunderground_api_key']}/conditions/q/#{params[:state]}/#{city_param}.json")
+
+  		
   		if results['response']['error'].present?
   			@error = results['response']['error']['description']
 			else
 				@current_observation = results['current_observation']
+				create_location(params[:city], params[:state])
 			end
   	end
+  	@locations = Location.all
+  end
+
+  def create_location(city_param, state_param)
+  	location_exists = false
+
+		Location.all.each do |location| 
+			if location.city == city_param && location.state == state_param
+				location_exists = true
+			end
+		end
+		if location_exists == false
+			Location.create(city: city_param, state: state_param)
+		end
   end
 end

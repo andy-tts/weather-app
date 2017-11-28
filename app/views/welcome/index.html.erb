@@ -22,6 +22,20 @@
 			<p>Weather for <%=@current_observation['display_location']['full'] %></p>
 			<p><%= @current_observation['temperature_string'] %></p>
 			<p>Humidity <%=@current_observation['relative_humidity'] %></p>
+			<%= link_to "Full Forecast", @current_observation['forecast_url'], target: "_blank" %>
 		</div>
 	</div>
 <% end %>
+<div class="row">
+	<div class="col-md-12">
+		<h5>Previously searched cities:</h5>
+		<ul>
+			<% @locations.each do |location| %>
+				<li>
+					<%= location.city %>, <%= location.state %>
+					<%= link_to "Full Forecast", "http://www.wunderground.com/US/#{location.state}/#{location.city}.html", target: "_blank" %>	
+				</li>
+			<% end %>
+		</ul>
+	</div>
+</div>
