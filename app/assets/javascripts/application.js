@@ -16,8 +16,6 @@
 //= require jquery
 
 function initMap() {
-
-
 	var ourMap = new google.maps.Map(document.getElementById('map-canvas'), {
 		center: {lat: 39.961, lng: -82.998},
 		zoom: 14
@@ -26,7 +24,8 @@ function initMap() {
 	var marker = new google.maps.Marker({
 		position: {lat: 39.9585, lng: -83.0119},
 		title: "Idea Foundry",
-		map: ourMap
+		map: ourMap,
+		animation: google.maps.Animation.DROP
 	});
 
 	var infoWindow = new google.maps.InfoWindow({

@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
 
+  get 'locations/show'
+
+  get 'show' => 'locations#show'
+
   get 'index' => 'welcome#index'
   post 'index' => 'welcome#index'
 

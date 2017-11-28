@@ -34,6 +34,9 @@
 		<% @locations.each do |location| %>
 			<p>
 				<%= link_to "#{location.city}, #{location.state}", "https://www.wunderground.com/weather/us/#{location.state}/#{location.city}", target: "_blank"%>
+				<% if location.latitude.present? && location.longitude.present? %>
+					<p>Lat: <%= location.latitude %>, Lon: <%= location.longitude %></p>
+				<%end%>
 			</p>
 		<%end%>
 	</div>
@@ -42,7 +45,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<div id="map-canvas">
-			
+
 		</div>
 	</div>
 </div>

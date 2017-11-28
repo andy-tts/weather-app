@@ -21,7 +21,9 @@ class WelcomeController < ApplicationController
 	  			end
 	  		end
 	  		if caught == false
-	  			city_state = Location.create(city: params[:city], state: params[:state]) 
+	  			latitude = results['current_observation']['display_location']['latitude']
+  				longitude = results['current_observation']['display_location']['longitude']
+	  			Location.create(city: params[:city], state: params[:state], latitude: latitude, longitude: longitude) 
 	  		end
   			@current_observation = results['current_observation']
   		end
