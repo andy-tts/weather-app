@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To get this project functioning on your own local server,
+you have to get an API key from wunderground for free.
+The free package allows you 500 calls per day which should be more than enough.
+https://www.wunderground.com/weather/api
 
-Things you may want to cover:
+Also, grab a google API key from https://developers.google.com/maps/web/
+for map part of this project. It's free so the insecure nature of this website
+shouldn't be too much of an issue.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Place the two keys in weather-app/config/application.yml as so:
+wunderground_api_key: "your_wunderground_key_here"
+google_api_key: "your_google_key_here"
