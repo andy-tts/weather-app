@@ -1,7 +1,8 @@
 function initMap() {
 	var mapOptions = {
 		center: { lat: 39.964, lng: -82.999},
-		zoom: 3
+		zoom: 3,
+		mapTypeId: 'satellite'
 	};
 	var ourMap = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
@@ -20,16 +21,10 @@ function initMap() {
 		infoWindow.open(ourMap, marker);
 	});
 
-	var sites = [
-		[ "Ottawa", 45.42, -75.69 ],
-		[ "London", 51.50, 0.128 ],
-		[ "Columbus", 39.964, -82.999]
-	];
-
-	for (var i=0; i < sites.length; i++) {
+	for (var i=0; i < cities.length; i++) {
 		new google.maps.Marker({
-			position: { lat: sites[i][1], lng: sites[i][2] },
-			title: sites[i][0],
+			position: { lat: cities[i][2], lng: cities[i][3] },
+			title: cities[i][0] + ", " + cities[i][1],
 			map: ourMap,
 			animation: google.maps.Animation.DROP
 		});

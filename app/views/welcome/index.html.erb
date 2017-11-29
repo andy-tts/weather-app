@@ -42,6 +42,21 @@
 	</div>
 </div>
 
+<script type="text/javascript">
+	var cities = [];
+	var city = "";
+	var state = "";
+	var latitude; 
+	var longitude;
+	<% @locations.each do |location| %>
+		city = '<%= location.city %>';
+		state = '<%= location.state %>';
+		latitude = <%= location.latitude %>;
+		longitude = <%= location.longitude %>;
+		cities.push([city, state, latitude, longitude]);
+	<% end %>
+</script>
+
 <div class="row">
 	<div class="col-md-12">
 		<div id="map-canvas"></div>
