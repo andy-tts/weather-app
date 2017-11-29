@@ -21,7 +21,7 @@ function initMap() {
 		infoWindow.open(ourMap, marker);
 	});
 
-	for (var i=0; i < cities.length; i++) {
+	$.each(cities, function(i, city) {
 		let cityMarker = new google.maps.Marker({
 			position: { lat: cities[i][2], lng: cities[i][3] },
 			title: cities[i][0] + ", " + cities[i][1],
@@ -36,5 +36,5 @@ function initMap() {
 		google.maps.event.addListener(cityMarker, 'click', function() {
 			markerInfoWindow.open(ourMap, cityMarker);
 		});
-	}
+	});
 }
