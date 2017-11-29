@@ -6,7 +6,8 @@
 function initMap() {
 	var ourMap = new google.maps.Map(document.getElementById('map-canvas'), {
 		center: {lat: 39.961, lng: -82.998},
-		zoom: 14
+		zoom: 7,
+		// mapTypeId: 'satellite'
 	});
 
 	var marker = new google.maps.Marker({
@@ -27,11 +28,19 @@ function initMap() {
 	// [city, state, latitude, longitude]
 	// [0,    1,     2,        3        ]
 	for (var i=0; i < cities.length; i++) {
-		new google.maps.Marker({
+		let cityMarker = new google.maps.Marker({
 			position: {lat: cities[i][2], lng: cities[i][3] },
 			title: cities[i][0] + ", " + cities[i][1],
 			map: ourMap,
 			animation: google.maps.Animation.DROP
+		});
+		
+		let infoWindow = new google.maps.InfoWindow({
+			content: "<h5>" + cities[i][0] + ", " + cities[i][1] + "</h5>"	
+		});
+
+		google.maps.event.addListener(cityMarker, 'click', function() {
+			infoWindow.open(ourMap, cityMarker);
 		});
 	}
 }
