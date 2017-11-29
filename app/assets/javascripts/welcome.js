@@ -22,11 +22,19 @@ function initMap() {
 	});
 
 	for (var i=0; i < cities.length; i++) {
-		new google.maps.Marker({
+		let cityMarker = new google.maps.Marker({
 			position: { lat: cities[i][2], lng: cities[i][3] },
 			title: cities[i][0] + ", " + cities[i][1],
 			map: ourMap,
 			animation: google.maps.Animation.DROP
+		});
+
+		let markerInfoWindow = new google.maps.InfoWindow({
+			content: "<h5>" + cities[i][0] + ", " + cities[i][1]  +"</h5>"
+		});
+
+		google.maps.event.addListener(cityMarker, 'click', function() {
+			markerInfoWindow.open(ourMap, cityMarker);
 		});
 	}
 }
